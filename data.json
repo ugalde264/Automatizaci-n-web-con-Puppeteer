@@ -1,0 +1,23 @@
+{
+    "conferences": [
+      {
+        "id": 1,
+        "name": "Node.js Conference",
+        "location": "San Francisco",
+        "date": "2024-09-20"
+      },
+      {
+        "id": 2,
+        "name": "JavaScript Summit",
+        "location": "New York",
+        "date": "2024-10-05"
+      },
+      {
+        "id": 3,
+        "name": "Tech Innovators",
+        "location": "London",
+        "date": "2024-11-15"
+      }
+    ]
+  }
+  
