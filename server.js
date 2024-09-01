@@ -3,10 +3,14 @@ const fastify = require('fastify')({ logger: true });
 const fs = require('fs');
 const path = require('path');
 
-// Define a route for the API
+// Ruta para la raíz
+fastify.get('/', async (request, reply) => {
+  reply.send({ message: 'Welcome to My Fastify API!' });
+});
+
+// Ruta para leer datos de forma asincrónica
 fastify.get('/api/data', async (request, reply) => {
   try {
-    // Asynchronous file read
     const data = await fs.promises.readFile(path.join(__dirname, 'data.json'), 'utf-8');
     reply.send(JSON.parse(data));
   } catch (err) {
@@ -15,7 +19,7 @@ fastify.get('/api/data', async (request, reply) => {
   }
 });
 
-// Synchronous file read example route
+// Ruta para leer datos de forma sincrónica
 fastify.get('/api/sync-data', (request, reply) => {
   try {
     const data = fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8');
@@ -26,7 +30,7 @@ fastify.get('/api/sync-data', (request, reply) => {
   }
 });
 
-// Start the server
+// Iniciar el servidor
 const start = async () => {
   try {
     await fastify.listen({ port: process.env.PORT || 3000, host: '0.0.0.0' });
