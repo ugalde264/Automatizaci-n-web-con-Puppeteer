@@ -2,10 +2,32 @@ require('dotenv').config();
 const fastify = require('fastify')({ logger: true });
 const fs = require('fs');
 const path = require('path');
+const puppeteer = require('puppeteer');
 
-// Ruta para la raíz
-fastify.get('/', async (request, reply) => {
-  reply.send({ message: 'Hola a mi Fastify API!' });
+// Ruta para tomar una captura de pantalla
+fastify.get('/api/screenshot', async (request, reply) => {
+  const url = request.query.url || 'https://www.google.com';
+
+  try {
+    // Lanzar un navegador
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    
+    // Navegar a la URL proporcionada
+    await page.goto(url);
+    
+    // Tomar una captura de pantalla
+    const screenshotPath = path.join(__dirname, 'screenshot.png');
+    await page.screenshot({ path: screenshotPath });
+
+    // Cerrar el navegador
+    await browser.close();
+
+    reply.sendFile('screenshot.png');
+  } catch (err) {
+    fastify.log.error(err);
+    reply.status(500).send({ error: 'Failed to take screenshot' });
+  }
 });
 
 // Ruta para leer datos de forma asincrónica
@@ -28,6 +50,11 @@ fastify.get('/api/sync-data', (request, reply) => {
     fastify.log.error(err);
     reply.status(500).send({ error: 'Failed to read data synchronously' });
   }
+});
+
+// Ruta para la raíz
+fastify.get('/', async (request, reply) => {
+  reply.send({ message: 'Bienvenido a la API de conferencias!' });
 });
 
 // Iniciar el servidor
