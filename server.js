@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const puppeteer = require('puppeteer');
 
-// Define a route for the API
+// Define una ruta para la API
 fastify.get('/api/data', async (request, reply) => {
   try {
     const data = await fs.promises.readFile(path.join(__dirname, 'data.json'), 'utf-8');
@@ -52,7 +52,7 @@ fastify.get('/api/screenshot', async (request, reply) => {
   }
 });
 
-// Start the server
+// iniciar el servidor
 const start = async () => {
   try {
     await fastify.listen({ port: process.env.PORT || 3000, host: '0.0.0.0' });
