@@ -5,7 +5,7 @@ const path = require('path');
 
 // Ruta para la raíz
 fastify.get('/', async (request, reply) => {
-  reply.send({ message: 'Welcome to My Fastify API!' });
+  reply.send({ message: 'Hola a mi Fastify API!' });
 });
 
 // Ruta para leer datos de forma asincrónica
