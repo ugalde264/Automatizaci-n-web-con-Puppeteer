@@ -1,21 +1,21 @@
 {
-    "conferences": [
+    "conferencias": [
       {
         "id": 1,
-        "name": "Node.js Conference",
-        "location": "San Francisco",
+        "name": "Node.js Conferencia",
+        "location": "España",
         "date": "2024-09-20"
       },
       {
         "id": 2,
-        "name": "JavaScript Summit",
+        "name": "JavaScript conferencia",
         "location": "New York",
         "date": "2024-10-05"
       },
       {
         "id": 3,
-        "name": "Tech Innovators",
-        "location": "London",
+        "name": "Hitss conferencia",
+        "location": "Mexico",
         "date": "2024-11-15"
       }
     ]
