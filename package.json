@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "omar ugalde ñ",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
